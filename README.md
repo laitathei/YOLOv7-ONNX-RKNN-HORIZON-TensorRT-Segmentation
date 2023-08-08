@@ -1,0 +1,1 @@
+python3 export.py --weights ./model/yolov7-seg.pt --include onnx --topk-all 100 --iou-thres 0.65 --conf-thres 0.35 --img-size 384 640 --simplify

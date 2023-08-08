@@ -1,0 +1,7 @@
+[submodule "yolov7"]
+	path = yolov7
+	url = https://github.com/WongKinYiu/yolov7.git
+	branch = u7
+[submodule "rknn-toolkit2"]
+	path = rknn-toolkit2
+	url = https://github.com/rockchip-linux/rknn-toolkit2
