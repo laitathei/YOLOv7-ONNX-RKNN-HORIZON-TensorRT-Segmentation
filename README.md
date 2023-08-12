@@ -19,7 +19,7 @@ pip3 install -r requirements.txt
 ## 2. Convert Pytorch model to ONNX
 Remember to change the variable to your setting.
 ```
-python3 pytorch2onnx.py --weights ./model/yolov7-seg.pt --include onnx --topk-all 100 --iou-thres 0.65 --conf-thres 0.35 --img-size 480 640 --simplify
+python3 pytorch2onnx.py --weights ./model/yolov7-seg.pt --include onnx --img-size 480 640 --simplify
 ```
 
 ## 3. RKNN Prerequisite
