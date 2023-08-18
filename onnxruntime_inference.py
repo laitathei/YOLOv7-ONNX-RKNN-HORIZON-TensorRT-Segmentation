@@ -13,7 +13,7 @@ model_name = 'yolov7-seg'
 model_path = "./model"
 ONNX_MODEL = f"{model_path}/{model_name}-{input_height}-{input_width}.onnx"
 video_path = "test.mp4"
-video_inference = True
+video_inference = False
 CLASSES = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 
          'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 
          'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 
