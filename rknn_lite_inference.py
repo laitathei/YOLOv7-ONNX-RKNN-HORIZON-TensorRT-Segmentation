@@ -22,7 +22,7 @@ if __name__ == '__main__':
         os.makedirs(result_path)
     rknn_lite = RKNNLite(verbose=False)
     ret = rknn_lite.load_rknn(RKNN_MODEL)
-    ret = rknn_lite.init_runtime(core_mask=RKNNLite.NPU_CORE_0_1_2)
+    ret = rknn_lite.init_runtime()
     if video_inference == True:
         cap = cv2.VideoCapture(video_path)
         while(True):
