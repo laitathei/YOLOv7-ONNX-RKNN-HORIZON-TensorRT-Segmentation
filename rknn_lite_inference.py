@@ -23,21 +23,44 @@ if __name__ == '__main__':
     rknn_lite = RKNNLite(verbose=False)
     ret = rknn_lite.load_rknn(RKNN_MODEL)
     ret = rknn_lite.init_runtime(core_mask=RKNNLite.NPU_CORE_0_1_2)
-    image_3c = cv2.imread(image_path)
-    image_4c, image_3c = preprocess(image_3c, input_height, input_width)
-    print(image_4c.shape)
-    ret = rknn_lite.init_runtime()
-    outputs = rknn_lite.inference(inputs=[image_4c])
-    outputs[0] = np.squeeze(outputs[0])
-    outputs[0] = np.expand_dims(outputs[0], axis=0)
-    outputs = [outputs[0], outputs[4]]
-    colorlist = gen_color(len(CLASSES))
-    results = postprocess(outputs, image_4c, image_3c, conf_thres, iou_thres) ##[box,mask,shape]
-    results = results[0]              ## batch=1
-    boxes, masks, shape = results
-    if isinstance(masks, np.ndarray):
-        mask_img, vis_img = vis_result(image_3c,  results, colorlist, CLASSES, result_path)
-        print('--> Save inference result')
+    if video_inference == True:
+        cap = cv2.VideoCapture(video_path)
+        while(True):
+            ret, image_3c = cap.read()
+            if not ret:
+                break
+            print('--> Running model for video inference')
+            image_4c, image_3c = preprocess(image_3c, input_height, input_width)
+            outputs = rknn_lite.inference(inputs=[image_3c])
+            outputs[0] = np.squeeze(outputs[0])
+            outputs[0] = np.expand_dims(outputs[0], axis=0)
+            outputs = [outputs[0], outputs[4]]
+            colorlist = gen_color(len(CLASSES))
+            results = postprocess(outputs, image_4c, image_3c, conf_thres, iou_thres) ##[box,mask,shape]
+            results = results[0]              ## batch=1
+            boxes, masks, shape = results
+            if isinstance(masks, np.ndarray):
+                mask_img, vis_img = vis_result(image_3c,  results, colorlist, CLASSES, result_path)
+                cv2.imshow("mask_img", mask_img)
+                cv2.imshow("vis_img", vis_img)
+            else:
+                print("No segmentation result")
+            cv2.waitKey(10)
     else:
-        print("No segmentation result")
+        image_3c = cv2.imread(image_path)
+        image_4c, image_3c = preprocess(image_3c, input_height, input_width)
+        outputs = rknn_lite.inference(inputs=[image_3c])
+        outputs[0] = np.squeeze(outputs[0])
+        outputs[0] = np.expand_dims(outputs[0], axis=0)
+        outputs = [outputs[0], outputs[4]]
+        colorlist = gen_color(len(CLASSES))
+        results = postprocess(outputs, image_4c, image_3c, conf_thres, iou_thres) ##[box,mask,shape]
+        results = results[0]              ## batch=1
+        boxes, masks, shape = results
+        if isinstance(masks, np.ndarray):
+            mask_img, vis_img = vis_result(image_3c,  results, colorlist, CLASSES, result_path)
+            print('--> Save inference result')
+        else:
+            print("No segmentation result")
+    print("RKNN inference finish")
     rknn_lite.release()
