@@ -1,5 +1,7 @@
 # YOLOv7-ONNX-RKNN-Segmentation
 ***Remark: This repo only support 1 batch size***
+![!YOLOv7 ONNX RKNN Segmentation Picture](https://github.com/laitathei/YOLOv7-ONNX-RKNN-Segmentation/blob/master/doc/visual_image.jpg)
+
 ```
 git clone --recursive https://github.com/laitathei/YOLOv7-ONNX-RKNN-Segmentation.git
 ```
