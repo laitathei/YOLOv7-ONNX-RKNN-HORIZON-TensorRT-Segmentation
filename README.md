@@ -35,6 +35,18 @@ To improve perfermance, you can change ```./config/yolov7-seg-xxx-xxx.quantizati
 Please follow [official document](https://github.com/rockchip-linux/rknn-toolkit2/blob/master/doc/Rockchip_User_Guide_RKNN_Toolkit2_EN-1.5.0.pdf) hybrid quatization part and reference to [example program](https://github.com/rockchip-linux/rknn-toolkit2/tree/master/examples/functions/hybrid_quant) to modify your codes.
 ```
 python3 onnx2rknn_step1.py
+```
+Add following setting into ```./config/yolov7-seg-xxx-xxx.quantization.cfg``` 
+```
+custom_quantize_layers:
+    528_shape4_Slice_315: float16
+    638_shape4_Slice_391: float16
+    748_shape4_Slice_467: float16
+    528_int8: float16
+    638_int8: float16
+    748_int8: float16
+```
+```
 python3 onnx2rknn_step2.py
 ```
 
