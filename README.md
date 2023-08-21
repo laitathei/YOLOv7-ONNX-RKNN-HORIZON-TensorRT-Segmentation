@@ -15,6 +15,7 @@ onnxruntime: 1.10.0
 
 ## 1. Yolov7 Prerequisite
 ```
+cd yolov7
 pip3 install -r requirements.txt
 ```
 
