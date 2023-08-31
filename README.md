@@ -73,7 +73,7 @@ get onnx file with ```opset 11```
 ```
 python3 pytorch2onnx.py --weights ./model/yolov7-seg.pt --include onnx --img-size 480 640 --simplify --opset 11
 ```
-Remember to change the variable to your setting include ```yolov8seg_config.yaml```
+Remember to change the variable to your setting include ```yolov7seg_config.yaml```
 ```
 sh 01_check.sh
 sh 02_preprocess.sh
