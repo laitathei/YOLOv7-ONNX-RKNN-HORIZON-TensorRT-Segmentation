@@ -9,11 +9,11 @@ input_height = 480
 input_offset = 128
 result_path = "./result"
 image_path = "./dataset/bus.jpg"
-model_name = 'yolov8n'
+model_name = 'yolov7-seg'
 model_path = "./model_output"
 HORIZON_MODEL = f"{model_path}/{model_name}-{input_height}-{input_width}.bin"
 video_path = "test.mp4"
-video_inference = True
+video_inference = False
 CLASSES = ['person', 'bicycle', 'car', 'motorcycle', 'airplane', 'bus', 'train', 'truck', 'boat', 'traffic light', 'fire hydrant', 'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog', 'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe', 'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee', 'skis','snowboard', 'sports ball', 'kite', 'baseball bat', 'baseball glove', 'skateboard', 'surfboard', 'tennis racket', 'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl', 'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot', 'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch', 'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop', 'mouse', 'remote', 'keyboard', 'cell phone', 'microwave', 'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock', 'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush']
 
 if __name__ == '__main__':
@@ -40,7 +40,7 @@ if __name__ == '__main__':
             output4 = outputs[4].buffer
             output0 = np.squeeze(output0)
             output0 = np.expand_dims(output0, axis=0)
-            outputs = [outputs[0], outputs[4]]
+            outputs = [output0, output4]
             colorlist = gen_color(len(CLASSES)) 
             results = postprocess(outputs, image_4c, image_3c, conf_thres, iou_thres, classes=len(CLASSES)) ##[box,mask,shape]
             results = results[0]              ## batch=1
@@ -65,7 +65,7 @@ if __name__ == '__main__':
         output4 = outputs[4].buffer
         output0 = np.squeeze(output0)
         output0 = np.expand_dims(output0, axis=0)
-        outputs = [outputs[0], outputs[4]]
+        outputs = [output0, output4]
         colorlist = gen_color(len(CLASSES)) 
         results = postprocess(outputs, image_4c, image_3c, conf_thres, iou_thres, classes=len(CLASSES)) ##[box,mask,shape]
         results = results[0]              ## batch=1
