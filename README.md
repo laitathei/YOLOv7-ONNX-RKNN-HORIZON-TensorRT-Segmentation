@@ -5,7 +5,7 @@
 
 Video source: https://www.youtube.com/watch?v=n3Dru5y3ROc&t=0s
 ```
-git clone --recursive https://github.com/laitathei/YOLOv7-ONNX-RKNN-Segmentation.git
+git clone --recursive https://github.com/laitathei/YOLOv7-ONNX-RKNN-HORIZON-Segmentation.git
 ```
 ## 0. Environment Setting
 ```
