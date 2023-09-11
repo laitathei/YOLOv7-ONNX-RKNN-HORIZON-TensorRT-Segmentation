@@ -223,6 +223,8 @@ def preprocess(image, input_height, input_width):
     # Expand the dimensions of the image_3c data to match the expected input shape
     image_4c = np.expand_dims(image_4c, axis=0).astype(np.float32)
 
+    image_4c = np.ascontiguousarray(image_4c)  # contiguous
+    
     return image_4c, image_3c
 
 def postprocess(preds, img, orig_img, conf_thres, iou_thres, classes=None):
