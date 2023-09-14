@@ -16,12 +16,12 @@ def get_dataset_txt(dataset_path, dataset_savefile):
     file_data = glob.glob(os.path.join(dataset_path,"*.jpg"))
     with open(dataset_savefile, "w") as f:
         for file in file_data:
-            f.writelines(f"./{file}\n")
+            f.writelines(f"{file}\n")
 
 def move_onnx_config():
     file_data = glob.glob("*.onnx")
     for file in file_data:
-        shutil.move(file, f"./{config_path}/{file}")
+        shutil.move(file, f"{config_path}/{file}")
 
 if __name__ == '__main__':
     isExist = os.path.exists(dataset_path)
