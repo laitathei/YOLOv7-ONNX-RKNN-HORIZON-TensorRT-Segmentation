@@ -1,11 +1,11 @@
-# YOLOv7-ONNX-RKNN-Segmentation
+# YOLOv7-ONNX-RKNN-HORIZON-TensorRT-Segmentation
 ***Remark: This repo only support 1 batch size***
 ![!YOLOv7 ONNX RKNN Segmentation Picture](https://github.com/laitathei/YOLOv7-ONNX-RKNN-Segmentation/blob/master/doc/visual_image.jpg)
 ![!YOLOv7 ONNX RKNN Segmentation Video](https://github.com/laitathei/YOLOv7-ONNX-RKNN-Segmentation/blob/master/doc/result.gif)
 
 Video source: https://www.youtube.com/watch?v=n3Dru5y3ROc&t=0s
 ```
-git clone --recursive https://github.com/laitathei/YOLOv7-ONNX-RKNN-HORIZON-Segmentation.git
+git clone --recursive https://github.com/laitathei/YOLOv7-ONNX-RKNN-HORIZON-TensorRT-Segmentation.git
 ```
 ## 0. Environment Setting
 ```
